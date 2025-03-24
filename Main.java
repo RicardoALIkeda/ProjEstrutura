@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static List<Pais> paises = new ArrayList<>();
+    private static List<Pais> paises = new ArrayList<>(100);
     private static boolean dadosCarregados = false;
 
     public static void main(String[] args) {
