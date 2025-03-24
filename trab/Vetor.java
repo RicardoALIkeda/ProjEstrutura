@@ -1,5 +1,10 @@
 package trab;
-import java.awt.geom.Ellipse2D;
+
+/*
+Diego Estevão Lopes de Queiroz - 10419038
+Ricardo Andre Lopes Ikeda - 10390256
+Vinicius Gutierrez Gomes - 10425609
+*/
 
 class Vetor {
     String[ ] A; // armazena os elementos do vetor
