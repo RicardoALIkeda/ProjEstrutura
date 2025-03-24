@@ -72,6 +72,10 @@ public class Main {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
+                if (paises.size() >= 100) {
+                    System.out.println("Erro: O arquivo contém mais de 100 registros.");
+                    break;
+                }
                 String[] data = line.split(",");
                 Pais pais = new Pais(
                         data[0],
