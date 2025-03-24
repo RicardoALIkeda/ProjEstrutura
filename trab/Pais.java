@@ -1,3 +1,4 @@
+package trab;
 public class Pais {
     private String sigla;
     private String pais;
