@@ -8,7 +8,6 @@ public class Pais {
     private double tarifaStandard;
     private double tarifaPremium;
 
-    // Construtor
     public Pais(String sigla, String pais, int qtdeTitulos, int qtdeShows, int qtdeFilmes, double tarifaBasica, double tarifaStandard, double tarifaPremium) {
         this.sigla = sigla;
         this.pais = pais;
@@ -20,7 +19,6 @@ public class Pais {
         this.tarifaPremium = tarifaPremium;
     }
 
-    // Getters e Setters
     public String getSigla() {
         return sigla;
     }
