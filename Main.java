@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Main {
     private static List<Pais> paises = new ArrayList<>();
+    private static boolean dadosCarregados = false;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int option;
-
         do {
             System.out.println("Menu:");
             System.out.println("1. Carregar dados do arquivo");
@@ -26,18 +26,35 @@ public class Main {
             switch (option) {
                 case 1:
                     carregarDadosDoArquivo();
+                    dadosCarregados = true;
                     break;
                 case 2:
-                    System.out.println("Exibindo registros em ordem alfabética de país...");
+                    if (dadosCarregados) {
+                        System.out.println("Exibindo registros em ordem alfabética de país...");
+                    } else {
+                        System.out.println("Por favor, carregue os dados primeiro (opção 1).");
+                    }
                     break;
                 case 3:
-                    System.out.println("Exibindo registros em ordem decrescente de qtde. títulos...");
+                    if (dadosCarregados) {
+                        System.out.println("Exibindo registros em ordem decrescente de qtde. títulos...");
+                    } else {
+                        System.out.println("Por favor, carregue os dados primeiro (opção 1).");
+                    }
                     break;
                 case 4:
-                    System.out.println("Consultando país por sigla...");
+                    if (dadosCarregados) {
+                        System.out.println("Consultando país por sigla...");
+                    } else {
+                        System.out.println("Por favor, carregue os dados primeiro (opção 1).");
+                    }
                     break;
                 case 5:
-                    System.out.println("Exibindo estatísticas...");
+                    if (dadosCarregados) {
+                        System.out.println("Exibindo estatísticas...");
+                    } else {
+                        System.out.println("Por favor, carregue os dados primeiro (opção 1).");
+                    }
                     break;
                 case 6:
                     System.out.println("Saindo...");
@@ -72,5 +89,6 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Erro ao carregar dados do arquivo: " + e.getMessage());
         }
+        System.out.println("Total de registros: " + paises.size());
     }
 }
