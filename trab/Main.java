@@ -106,7 +106,7 @@ public class Main {
                     System.out.println("Diego Estevão Lopes de Queiroz - 10419038");
                     System.out.println("Ricardo Andre Lopes Ikeda - 10390256");
                     System.out.println("Vinicius Gutierrez Gomes - 10425609");
-                    System.out.println("Confira este vídeo incrível: https://youtu.be/MJbE3uWN9vE?si=YY0dUWvP2CQOlMy2");
+                    System.out.println("Link do vídeo de apresentação: https://youtu.be/MJbE3uWN9vE?si=YY0dUWvP2CQOlMy2");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
