@@ -37,14 +37,14 @@ public class Main {
                     break;
                 case 2:
                     if (dadosCarregados) {
-                        System.out.println("Exibindo registros em ordem alfabética de país...");
+                        exibirRegistrosEmOrdemAlfabetica();
                     } else {
                         System.out.println("Por favor, carregue os dados primeiro (opção 1).");
                     }
                     break;
                 case 3:
                     if (dadosCarregados) {
-                        System.out.println("Exibindo registros em ordem decrescente de qtde. títulos...");
+                        exibirRegistrosEmOrdemDecrescenteDeTitulos();
                     } else {
                         System.out.println("Por favor, carregue os dados primeiro (opção 1).");
                     }
@@ -101,5 +101,25 @@ public class Main {
             System.out.println("Erro ao carregar dados do arquivo: " + e.getMessage());
         }
         System.out.println("Total de registros: " + paises.size());
+    }
+
+    private static void exibirRegistrosEmOrdemAlfabetica() {
+        List<Pais> listaOrdenada = new ArrayList<>(paises);
+
+        listaOrdenada.sort((p1, p2) -> p1.getPais().compareToIgnoreCase(p2.getPais()));
+
+        for (Pais pais : listaOrdenada) {
+            System.out.println(pais);
+        }
+    }
+
+    private static void exibirRegistrosEmOrdemDecrescenteDeTitulos() {
+        List<Pais> listaOrdenada = new ArrayList<>(paises);
+
+        listaOrdenada.sort((p1, p2) -> Integer.compare(p2.getQtdeTitulos(), p1.getQtdeTitulos()));
+
+        for (Pais pais : listaOrdenada) {
+            System.out.println(pais);
+        }
     }
 }
