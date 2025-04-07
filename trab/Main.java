@@ -61,37 +61,17 @@ public class Main {
                 case 5:
                     if (dadosCarregados) {
                         System.out.println("Escolha uma estatística para exibir:");
-                        System.out.println("1. Estatísticas gerais");
-                        System.out.println("2. Estatísticas por país");
-                        System.out.println("3. Estatísticas por tarifa");
-                        System.out.println("4. Estatísticas por quantidade de títulos");
-                        System.out.println("5. Estatísticas por quantidade de shows");
-                        System.out.println("6. Estatísticas por quantidade de filmes");
-                        System.out.println("7. Estatísticas por tarifa básica");
+                        System.out.println("1. Média das tarifas");
+                        System.out.println("2. País com tarifa básica mais cara");
                         System.out.print("Escolha uma opção: ");
                         int estatisticaOption = scanner.nextInt();
 
                         switch (estatisticaOption) {
                             case 1:
-                                exibirEstatisticas();
+                                exibirMediaDasTarifas();
                                 break;
                             case 2:
-                                exibirEstatisticasPorPais();
-                                break;
-                            case 3:
-                                exibirEstatisticasPorTarifa();
-                                break;
-                            case 4:
-                                exibirEstatisticasPorQuantidadeDeTitulos();
-                                break;
-                            case 5:
-                                exibirEstatisticasPorQuantidadeDeShows();
-                                break;
-                            case 6:
-                                exibirEstatisticasPorQuantidadeDeFilmes();
-                                break;
-                            case 7:
-                                exibirEstatisticasPorTarifaBasica();
+                                exibirPaisComTarifaBasicaMaisCara();
                                 break;
                             default:
                                 System.out.println("Opção inválida.");
@@ -106,7 +86,6 @@ public class Main {
                     System.out.println("Diego Estevão Lopes de Queiroz - 10419038");
                     System.out.println("Ricardo Andre Lopes Ikeda - 10390256");
                     System.out.println("Vinicius Gutierrez Gomes - 10425609");
-                    System.out.println("Link do vídeo de apresentação: https://youtu.be/MJbE3uWN9vE?si=YY0dUWvP2CQOlMy2");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -174,65 +153,39 @@ public class Main {
         }
         System.out.println("País com sigla " + sigla + " não encontrado.");
     }
-    private static void exibirEstatisticas() {
-        int totalTitulos = 0;
-        int totalShows = 0;
-        int totalFilmes = 0;
+    private static void exibirMediaDasTarifas() {
+        double somaTarifaBasica = 0;
+        double somaTarifaStandard = 0;
+        double somaTarifaPremium = 0;
+        int totalPaises = paises.size();
 
         for (Pais pais : paises) {
-            totalTitulos += pais.getQtdeTitulos();
-            totalShows += pais.getQtdeShows();
-            totalFilmes += pais.getQtdeFilmes();
+            somaTarifaBasica += pais.getTarifaBasica();
+            somaTarifaStandard += pais.getTarifaStandard();
+            somaTarifaPremium += pais.getTarifaPremium();
         }
 
-        System.out.println("Total de títulos: " + totalTitulos);
-        System.out.println("Total de shows: " + totalShows);
-        System.out.println("Total de filmes: " + totalFilmes);
+        System.out.println("Média da Tarifa Básica: " + (somaTarifaBasica / totalPaises));
+        System.out.println("Média da Tarifa Standard: " + (somaTarifaStandard / totalPaises));
+        System.out.println("Média da Tarifa Premium: " + (somaTarifaPremium / totalPaises));
     }
-    private static void exibirEstatisticasPorPais() {
+
+    private static void exibirPaisComTarifaBasicaMaisCara() {
+        Pais paisMaisCaro = null;
+        double maiorTarifaBasica = Double.MIN_VALUE;
+
         for (Pais pais : paises) {
-            System.out.println("País: " + pais.getPais());
-            System.out.println("Quantidade de títulos: " + pais.getQtdeTitulos());
-            System.out.println("Quantidade de shows: " + pais.getQtdeShows());
-            System.out.println("Quantidade de filmes: " + pais.getQtdeFilmes());
-            System.out.println();
+            if (pais.getTarifaBasica() > maiorTarifaBasica) {
+                maiorTarifaBasica = pais.getTarifaBasica();
+                paisMaisCaro = pais;
+            }
         }
-    }
-    private static void exibirEstatisticasPorTarifa() {
-        for (Pais pais : paises) {
-            System.out.println("País: " + pais.getPais());
-            System.out.println("Tarifa Básica: " + pais.getTarifaBasica());
-            System.out.println("Tarifa Standard: " + pais.getTarifaStandard());
-            System.out.println("Tarifa Premium: " + pais.getTarifaPremium());
-            System.out.println();
-        }
-    }
-    private static void exibirEstatisticasPorQuantidadeDeTitulos() {
-        for (Pais pais : paises) {
-            System.out.println("País: " + pais.getPais());
-            System.out.println("Quantidade de títulos: " + pais.getQtdeTitulos());
-            System.out.println();
-        }
-    }
-    private static void exibirEstatisticasPorQuantidadeDeShows() {
-        for (Pais pais : paises) {
-            System.out.println("País: " + pais.getPais());
-            System.out.println("Quantidade de shows: " + pais.getQtdeShows());
-            System.out.println();
-        }
-    }
-    private static void exibirEstatisticasPorQuantidadeDeFilmes() {
-        for (Pais pais : paises) {
-            System.out.println("País: " + pais.getPais());
-            System.out.println("Quantidade de filmes: " + pais.getQtdeFilmes());
-            System.out.println();
-        }
-    }
-    private static void exibirEstatisticasPorTarifaBasica() {
-        for (Pais pais : paises) {
-            System.out.println("País: " + pais.getPais());
-            System.out.println("Tarifa Básica: " + pais.getTarifaBasica());
-            System.out.println();
+
+        if (paisMaisCaro != null) {
+            System.out.println("País com a tarifa básica mais cara: " + paisMaisCaro.getPais());
+            System.out.println("Tarifa Básica: " + maiorTarifaBasica);
+        } else {
+            System.out.println("Nenhum país encontrado.");
         }
     }
 }
