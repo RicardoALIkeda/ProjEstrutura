@@ -86,6 +86,7 @@ public class Main {
                     System.out.println("Diego Estevão Lopes de Queiroz - 10419038");
                     System.out.println("Ricardo Andre Lopes Ikeda - 10390256");
                     System.out.println("Vinicius Gutierrez Gomes - 10425609");
+                    System.out.println("Link do video : https://www.youtube.com/watch?v=JkkPtSPOHfY");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -96,7 +97,7 @@ public class Main {
     }
 
     private static void carregarDadosDoArquivo() {
-        String filePath = "/workspaces/ProjEstrutura/trab/Netflix.txt";
+        String filePath = "trab/Netflix.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
